@@ -1,0 +1,156 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.server\\controllers\\validatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|solutionrelative:checkreport.server\\controllers\\validatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|solutionrelative:checkreport.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.client\\src\\fileupload.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|solutionrelative:checkreport.client\\src\\fileupload.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|solutionrelative:checkreport.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.server\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|solutionrelative:checkreport.server\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.client\\src\\main.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|solutionrelative:checkreport.client\\src\\main.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.client\\src\\app.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|solutionrelative:checkreport.client\\src\\app.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.client\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|solutionrelative:checkreport.client\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ValidateController.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Controllers\\ValidateController.cs",
+              "RelativeDocumentMoniker": "CheckReport.Server\\Controllers\\ValidateController.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Controllers\\ValidateController.cs",
+              "RelativeToolTip": "CheckReport.Server\\Controllers\\ValidateController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T20:44:31.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "CheckReport.Server\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Properties\\launchSettings.json",
+              "RelativeToolTip": "CheckReport.Server\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-03T20:33:15.482Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\appsettings.json",
+              "RelativeDocumentMoniker": "CheckReport.Server\\appsettings.json",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\appsettings.json",
+              "RelativeToolTip": "CheckReport.Server\\appsettings.json",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAA0AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-03T20:29:38.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FileUpload.tsx",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\src\\FileUpload.tsx",
+              "RelativeDocumentMoniker": "checkreport.client\\src\\FileUpload.tsx",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\src\\FileUpload.tsx",
+              "RelativeToolTip": "checkreport.client\\src\\FileUpload.tsx",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAACYAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-02-03T20:06:10.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "main.tsx",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\src\\main.tsx",
+              "RelativeDocumentMoniker": "checkreport.client\\src\\main.tsx",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\src\\main.tsx",
+              "RelativeToolTip": "checkreport.client\\src\\main.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-02-03T20:05:25.377Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "App.tsx",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\src\\App.tsx",
+              "RelativeDocumentMoniker": "checkreport.client\\src\\App.tsx",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\src\\App.tsx",
+              "RelativeToolTip": "checkreport.client\\src\\App.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-02-03T20:03:29.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\index.html",
+              "RelativeDocumentMoniker": "checkreport.client\\index.html",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\index.html",
+              "RelativeToolTip": "checkreport.client\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-02-03T20:00:07.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Program.cs",
+              "RelativeDocumentMoniker": "CheckReport.Server\\Program.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Program.cs",
+              "RelativeToolTip": "CheckReport.Server\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAcwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-03T15:11:45.933Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "Version": 1,
+  "Hash": "PtbL3HgR42tehHutup1fHEzmY4maYrDZ0P6hQShuWe4=",
+  "Source": "CheckReport.Server",
+  "BasePath": "_content/CheckReport.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\checkreport.client.esproj",
+      "Version": 2,
+      "Source": "checkreport.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

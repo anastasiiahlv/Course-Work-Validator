@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:52377",
+"RedirectUrl": "",
+"LaunchCommand": "npm run dev",
+"WorkingDirectory": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\..\\checkreport.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}

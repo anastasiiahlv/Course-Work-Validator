@@ -1,0 +1,6 @@
+@CheckReport.Server_HostAddress = http://localhost:5220
+
+GET {{CheckReport.Server_HostAddress}}/api/validate
+Accept: application/json
+
+###
