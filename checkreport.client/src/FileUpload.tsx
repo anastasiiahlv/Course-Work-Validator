@@ -33,17 +33,14 @@ const FileUpload: React.FC = () => {
             const response = await fetch('https://localhost:7270/api/validate', {
                 method: 'POST',
                 body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { "Accept": "application/json" }
             });
 
-            if (response.ok) {
-                const result = await response.json();
-                setMessage(`Результат: ${result.message}`);
-            } else {
-                setMessage('Помилка при перевірці файлу.');
-            }
+            const text = await response.text();
+            console.log("Відповідь сервера:", text);
+
+            const result = JSON.parse(text);
+            setMessage(`Результат: ${result.message}`);
         } catch (error) {
             setMessage("Помилка з'єднання з сервером.");
         }

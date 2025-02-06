@@ -38,3 +38,4 @@ C:\Users\USER\Desktop\univ\CheckReport\CheckReport.Server\obj\Debug\net9.0\ref\C
 C:\Users\USER\Desktop\univ\CheckReport\CheckReport.Server\bin\Debug\net9.0\DocumentFormat.OpenXml.dll
 C:\Users\USER\Desktop\univ\CheckReport\CheckReport.Server\bin\Debug\net9.0\DocumentFormat.OpenXml.Framework.dll
 C:\Users\USER\Desktop\univ\CheckReport\CheckReport.Server\bin\Debug\net9.0\System.IO.Packaging.dll
+C:\Users\USER\Desktop\univ\CheckReport\CheckReport.Server\obj\Debug\net9.0\CheckReport.Server.sourcelink.json

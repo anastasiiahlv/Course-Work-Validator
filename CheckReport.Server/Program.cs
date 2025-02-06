@@ -14,8 +14,7 @@ builder.Services.AddCors(options =>
             policy.WithOrigins("https://localhost:52377")
                   .AllowAnyMethod()
                   .AllowAnyHeader()
-                  .AllowCredentials();
-            //policy.SetIsOriginAllowed(_ => true).AllowAnyMethod().AllowAnyHeader();
+                  .AllowCredentials(); 
         });
 });
 
@@ -29,6 +28,16 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseExceptionHandler(appBuilder =>
+{
+    appBuilder.Run(async context =>
+    {
+        context.Response.StatusCode = 500;
+        context.Response.ContentType = "application/json";
+        await context.Response.WriteAsync("{ \"message\": \"Помилка на сервері\" }");
+    });
+});
 
 app.UseHttpsRedirection();
 
