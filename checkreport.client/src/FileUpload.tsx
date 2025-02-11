@@ -2,13 +2,13 @@
 
 const FileUpload: React.FC = () => {
     const [file, setFile] = useState<File | null>(null);
-    const [message, setMessage] = useState<string>('');
+    const [errors, setErrors] = useState<string[]>([]);
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
             setFile(file);
-            setMessage('');
+            setErrors([]); // Очистити помилки при виборі нового файлу
         }
     };
 
@@ -16,16 +16,15 @@ const FileUpload: React.FC = () => {
         event.preventDefault();
 
         if (!file) {
-            setMessage('Будь ласка, виберіть файл!');
+            setErrors(['Будь ласка, виберіть файл!']);
             return;
         }
 
         if (file.type !== 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
-            setMessage('Невірний формат файлу. Повинно бути .docx');
+            setErrors(['Невірний формат файлу. Повинно бути .docx']);
             return;
         }
 
-        // Формуємо FormData і відправляємо на сервер
         const formData = new FormData();
         formData.append('file', file);
 
@@ -40,21 +39,36 @@ const FileUpload: React.FC = () => {
             console.log("Відповідь сервера:", text);
 
             const result = JSON.parse(text);
-            setMessage(`Результат: ${result.message}`);
+
+            if (response.ok) {
+                setErrors([]); // Якщо помилок немає, очистити список
+            } else {
+                setErrors(result.errors || ['Невідома помилка']);
+            }
         } catch (error) {
-            setMessage("Помилка з'єднання з сервером.");
+            setErrors(["Помилка з'єднання з сервером."]);
         }
     };
 
     return (
-        <div>
+        <div className="file-upload">
             <form onSubmit={handleSubmit}>
                 <input type="file" onChange={handleFileChange} />
                 <button type="submit">Завантажити файл</button>
             </form>
-            <div>{message}</div>
+            {errors.length > 0 && (
+                <div className="error-messages">
+                    <ul>
+                        {errors.map((error, index) => (
+                            <li key={index}>{error}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
     );
 };
 
 export default FileUpload;
+
+
