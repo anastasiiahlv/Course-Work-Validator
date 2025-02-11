@@ -6,6 +6,9 @@ using System.IO;
 using System.Linq;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.AspNetCore.Http;
+using CheckReport.Server.Services;
+using System.Text.Json;
+using CheckReport.Server.Configurations;
 
 namespace CheckReport.Controllers
 {
@@ -14,12 +17,19 @@ namespace CheckReport.Controllers
     [Produces("application/json")]
     public class ValidateController : ControllerBase
     {
-        [HttpPost]
-        public IActionResult ValidateFile([FromForm] IFormFile file)
-        {
-            var errors = new HashSet<string>();
+        private readonly ILogger<ValidateController> _logger;
+        private readonly IOpenAiService _openAiService;
 
-            if (file == null)
+        public ValidateController(ILogger<ValidateController> logger, IOpenAiService openAiService)
+        {
+            _logger = logger;
+            _openAiService = openAiService;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ValidateFile([FromForm] IFormFile file)
+        {
+            if (file == null || file.Length == 0)
             {
                 return BadRequest(new { errors = new List<string> { "Не вибрано файл." } });
             }
@@ -31,36 +41,37 @@ namespace CheckReport.Controllers
                 return BadRequest(new { errors = new List<string> { "Невірний формат файлу. Повинно бути .docx" } });
             }
 
-            try
+            // Витягуємо текст із документа
+            string extractedText = ExtractTextFromDocx(file);
+            if (string.IsNullOrEmpty(extractedText))
             {
-                using (var stream = file.OpenReadStream())
-                using (var wordDoc = WordprocessingDocument.Open(stream, false))
-                {
-                    var doc = wordDoc.MainDocumentPart.Document;
-
-                    ValidateTitlePage(wordDoc, errors);
-
-                    // Перевірка текстового формату
-                    ValidateTextFormat(doc, errors);
-
-                    // Перевірка параметрів сторінки
-                    ValidatePageSettings(wordDoc, errors);
-
-                    // Перевірка нумерації сторінок
-                    ValidatePageNumbering(wordDoc, errors);
-                }
-
-                if (errors.Any())
-                {
-                    return BadRequest(new { errors = errors.ToList() });
-                }
-
-                return Ok(new { message = "Файл успішно пройшов перевірку!" });
+                return BadRequest(new { errors = new List<string> { "Не вдалося прочитати текст із документа." } });
             }
-            catch (Exception ex)
+
+            // Надсилаємо текст у GPT-4
+            string gptResponse = await _openAiService.AnalyzeText(extractedText);
+
+            // Друкуємо відповідь від GPT-4
+            Console.WriteLine("GPT-4 Response: " + gptResponse);
+
+            var analysisResult = JsonSerializer.Deserialize<Dictionary<string, object>>(gptResponse);
+
+            if (analysisResult != null && analysisResult.ContainsKey("errors"))
             {
-                Console.WriteLine($"Помилка: {ex.Message}");
-                return BadRequest(new { errors = new List<string> { $"Сталася помилка при обробці файлу: {ex.Message}" } });
+                var gptErrors = JsonSerializer.Deserialize<List<string>>(analysisResult["errors"].ToString());
+                return BadRequest(new { errors = gptErrors });
+            }
+
+            return Ok(new { message = "Файл успішно пройшов перевірку!" });
+        }
+
+        private string ExtractTextFromDocx(IFormFile file)
+        {
+            using (var stream = file.OpenReadStream())
+            using (var wordDoc = WordprocessingDocument.Open(stream, false))
+            {
+                var body = wordDoc.MainDocumentPart.Document.Body;
+                return string.Join("\n", body.Elements<Paragraph>().Select(p => p.InnerText.Trim()));
             }
         }
 

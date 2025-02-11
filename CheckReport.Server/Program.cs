@@ -1,6 +1,10 @@
+using CheckReport.Server.Configurations;
+using CheckReport.Server.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<OpenAiConfig>(builder.Configuration.GetSection("OpenAI"));
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -17,6 +21,8 @@ builder.Services.AddCors(options =>
                   .AllowCredentials(); 
         });
 });
+
+builder.Services.AddScoped<IOpenAiService, OpenAiService>();
 
 var app = builder.Build();
 

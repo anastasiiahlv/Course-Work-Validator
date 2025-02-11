@@ -3,25 +3,21 @@
 const FileUpload: React.FC = () => {
     const [file, setFile] = useState<File | null>(null);
     const [errors, setErrors] = useState<string[]>([]);
+    const [message, setMessage] = useState<string>("");
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-        if (file) {
-            setFile(file);
-            setErrors([]); // Очистити помилки при виборі нового файлу
+        const selectedFile = event.target.files?.[0];
+        if (selectedFile) {
+            setFile(selectedFile);
+            setErrors([]);
+            setMessage("");
         }
     };
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-
         if (!file) {
-            setErrors(['Будь ласка, виберіть файл!']);
-            return;
-        }
-
-        if (file.type !== 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
-            setErrors(['Невірний формат файлу. Повинно бути .docx']);
+            setErrors(["Будь ласка, виберіть файл!"]);
             return;
         }
 
@@ -35,15 +31,12 @@ const FileUpload: React.FC = () => {
                 headers: { "Accept": "application/json" }
             });
 
-            const text = await response.text();
-            console.log("Відповідь сервера:", text);
-
-            const result = JSON.parse(text);
-
+            const result = await response.json();
             if (response.ok) {
-                setErrors([]); // Якщо помилок немає, очистити список
+                setMessage(result.message);
+                setErrors([]);
             } else {
-                setErrors(result.errors || ['Невідома помилка']);
+                setErrors(result.errors || ["Невідома помилка"]);
             }
         } catch (error) {
             setErrors(["Помилка з'єднання з сервером."]);
@@ -51,13 +44,15 @@ const FileUpload: React.FC = () => {
     };
 
     return (
-        <div className="file-upload">
+        <div>
             <form onSubmit={handleSubmit}>
                 <input type="file" onChange={handleFileChange} />
-                <button type="submit">Завантажити файл</button>
+                <button type="submit">Перевірити</button>
             </form>
+
+            {message && <p style={{ color: "green" }}>{message}</p>}
             {errors.length > 0 && (
-                <div className="error-messages">
+                <div style={{ color: "red" }}>
                     <ul>
                         {errors.map((error, index) => (
                             <li key={index}>{error}</li>
@@ -70,5 +65,3 @@ const FileUpload: React.FC = () => {
 };
 
 export default FileUpload;
-
-

@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.server\\services\\openaiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|solutionrelative:checkreport.server\\services\\openaiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.server\\controllers\\validatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|solutionrelative:checkreport.server\\controllers\\validatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,20 +15,20 @@
       "RelativeMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|solutionrelative:checkreport.client\\src\\fileupload.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.client\\src\\app.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|solutionrelative:checkreport.client\\src\\app.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|solutionrelative:checkreport.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.client\\src\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|solutionrelative:checkreport.client\\src\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|solutionrelative:checkreport.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.client\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|solutionrelative:checkreport.client\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.server\\services\\iopenaiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|solutionrelative:checkreport.server\\services\\iopenaiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.client\\src\\main.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{3370DAE2-3AB8-47BF-9B7B-6F90A74ED3DE}|checkreport.client\\checkreport.client.esproj|solutionrelative:checkreport.client\\src\\main.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|c:\\users\\user\\desktop\\univ\\checkreport\\checkreport.server\\configurations\\openaiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D479E492-18C6-4621-A261-7F643F0322A9}|CheckReport.Server\\CheckReport.Server.csproj|solutionrelative:checkreport.server\\configurations\\openaiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,80 +38,95 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ValidateController.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Controllers\\ValidateController.cs",
-              "RelativeDocumentMoniker": "CheckReport.Server\\Controllers\\ValidateController.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Controllers\\ValidateController.cs",
-              "RelativeToolTip": "CheckReport.Server\\Controllers\\ValidateController.cs",
-              "ViewState": "AgIAAK0AAAAAAAAAAAAAAL8AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T20:14:05.663Z",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\appsettings.json",
+              "RelativeDocumentMoniker": "CheckReport.Server\\appsettings.json",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\appsettings.json",
+              "RelativeToolTip": "CheckReport.Server\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-11T21:11:43.536Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "App.css",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\src\\App.css",
-              "RelativeDocumentMoniker": "checkreport.client\\src\\App.css",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\src\\App.css",
-              "RelativeToolTip": "checkreport.client\\src\\App.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-02-06T16:22:03.468Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "FileUpload.tsx",
               "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\src\\FileUpload.tsx",
               "RelativeDocumentMoniker": "checkreport.client\\src\\FileUpload.tsx",
               "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\src\\FileUpload.tsx",
               "RelativeToolTip": "checkreport.client\\src\\FileUpload.tsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-02-03T20:06:10.3Z"
+              "WhenOpened": "2025-02-11T20:23:12.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ValidateController.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Controllers\\ValidateController.cs",
+              "RelativeDocumentMoniker": "CheckReport.Server\\Controllers\\ValidateController.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Controllers\\ValidateController.cs",
+              "RelativeToolTip": "CheckReport.Server\\Controllers\\ValidateController.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADYAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T14:15:21.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OpenAiService.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Services\\OpenAiService.cs",
+              "RelativeDocumentMoniker": "CheckReport.Server\\Services\\OpenAiService.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Services\\OpenAiService.cs",
+              "RelativeToolTip": "CheckReport.Server\\Services\\OpenAiService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T13:26:26.665Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "main.tsx",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\src\\main.tsx",
-              "RelativeDocumentMoniker": "checkreport.client\\src\\main.tsx",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\src\\main.tsx",
-              "RelativeToolTip": "checkreport.client\\src\\main.tsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-02-03T20:05:25.377Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "App.tsx",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\src\\App.tsx",
-              "RelativeDocumentMoniker": "checkreport.client\\src\\App.tsx",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\src\\App.tsx",
-              "RelativeToolTip": "checkreport.client\\src\\App.tsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-02-03T20:03:29.413Z"
+              "Title": "IOpenAiService.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Services\\IOpenAiService.cs",
+              "RelativeDocumentMoniker": "CheckReport.Server\\Services\\IOpenAiService.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Services\\IOpenAiService.cs",
+              "RelativeToolTip": "CheckReport.Server\\Services\\IOpenAiService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T13:24:56.917Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "index.html",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\index.html",
-              "RelativeDocumentMoniker": "checkreport.client\\index.html",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\checkreport.client\\index.html",
-              "RelativeToolTip": "checkreport.client\\index.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-02-03T20:00:07.754Z"
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Program.cs",
+              "RelativeDocumentMoniker": "CheckReport.Server\\Program.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Program.cs",
+              "RelativeToolTip": "CheckReport.Server\\Program.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAAAD8AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T13:20:24.167Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OpenAiConfig.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Configurations\\OpenAiConfig.cs",
+              "RelativeDocumentMoniker": "CheckReport.Server\\Configurations\\OpenAiConfig.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\univ\\CheckReport\\CheckReport.Server\\Configurations\\OpenAiConfig.cs",
+              "RelativeToolTip": "CheckReport.Server\\Configurations\\OpenAiConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T13:18:42.022Z"
             }
           ]
         }
