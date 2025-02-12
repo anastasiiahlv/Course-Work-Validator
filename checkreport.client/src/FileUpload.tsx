@@ -31,15 +31,29 @@ const FileUpload: React.FC = () => {
                 headers: { "Accept": "application/json" }
             });
 
-            const result = await response.json();
-            if (response.ok) {
-                setMessage(result.message);
-                setErrors([]);
-            } else {
-                setErrors(result.errors || ["Невідома помилка"]);
+            // Отримуємо текст відповіді
+            const text = await response.text();
+            console.log("Відповідь сервера:", text);
+
+            // Спробуємо розпарсити JSON
+            try {
+                const result = JSON.parse(text);
+
+                if (response.ok) {
+                    setMessage(result.message);
+                    setErrors([]);
+                } else {
+                    setErrors(result.errors || ["Невідома помилка"]);
+                    setMessage("");
+                }
+            } catch (error) {
+                setErrors(["Помилка обробки відповіді від сервера."]);
+                setMessage("");
             }
+
         } catch (error) {
             setErrors(["Помилка з'єднання з сервером."]);
+            setMessage("");
         }
     };
 
@@ -65,3 +79,4 @@ const FileUpload: React.FC = () => {
 };
 
 export default FileUpload;
+
