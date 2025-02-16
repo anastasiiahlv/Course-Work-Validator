@@ -10,6 +10,7 @@ using CheckReport.Server.Services;
 using System.Text.Json;
 using CheckReport.Server.Configurations;
 using System.Text.RegularExpressions;
+using System.Text;
 
 namespace CheckReport.Controllers
 {
@@ -20,11 +21,13 @@ namespace CheckReport.Controllers
     {
         private readonly ILogger<ValidateController> _logger;
         private readonly IOpenAiService _openAiService;
+        private readonly AzureDocumentService _documentService;
 
-        public ValidateController(ILogger<ValidateController> logger, IOpenAiService openAiService)
+        public ValidateController(ILogger<ValidateController> logger, IOpenAiService openAiService, AzureDocumentService documentService)
         {
             _logger = logger;
             _openAiService = openAiService;
+            _documentService = documentService;
         }
 
         [HttpPost]
@@ -37,16 +40,18 @@ namespace CheckReport.Controllers
 
             Console.WriteLine($"Отримано файл: {file.FileName}, Content-Type: {file.ContentType}");
 
-            if (!file.FileName.EndsWith(".docx"))
+            // ❌ Відхиляємо все, що не PDF
+            if (!file.FileName.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
             {
-                return BadRequest(new { errors = new List<string> { "Невірний формат файлу. Повинно бути .docx" } });
+                return BadRequest(new { errors = new List<string> { "Невірний формат файлу. Завантажуйте PDF." } });
             }
 
-            // Витягуємо текст із документа
-            string extractedText = ExtractTextFromDocx(file);
+            string extractedText = await _documentService.ExtractTextFromPdfAsync(file);
+            Console.WriteLine("Витягнутий текст з Azure AI:\n" + extractedText);
+
             if (string.IsNullOrEmpty(extractedText))
             {
-                return BadRequest(new { errors = new List<string> { "Не вдалося прочитати текст із документа." } });
+                return BadRequest(new { errors = new List<string> { "Не вдалося прочитати текст із PDF." } });
             }
 
             // Надсилаємо текст у GPT-4
@@ -77,25 +82,10 @@ namespace CheckReport.Controllers
 
                 return Ok(new { message = "Файл успішно пройшов перевірку!" });
             }
-            catch (JsonException jsonEx)
-            {
-                Console.WriteLine($"❌ JSON помилка: {jsonEx.Message}");
-                return BadRequest(new { errors = new List<string> { "Помилка розбору JSON від GPT-4." } });
-            }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ Інша помилка: {ex.Message}");
+                Console.WriteLine($"❌ JSON помилка: {ex.Message}");
                 return BadRequest(new { errors = new List<string> { "Помилка обробки відповіді від GPT-4." } });
-            }
-        }
-
-        private string ExtractTextFromDocx(IFormFile file)
-        {
-            using (var stream = file.OpenReadStream())
-            using (var wordDoc = WordprocessingDocument.Open(stream, false))
-            {
-                var body = wordDoc.MainDocumentPart.Document.Body;
-                return string.Join("\n", body.Elements<Paragraph>().Select(p => p.InnerText.Trim()));
             }
         }
     }

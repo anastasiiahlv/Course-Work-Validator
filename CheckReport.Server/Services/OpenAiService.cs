@@ -3,10 +3,11 @@ using Microsoft.Extensions.Options;
 using OpenAI;
 using System.Text.Json;
 using System.Text;
+using System.IO;
 
 namespace CheckReport.Server.Services
 {
-    public class OpenAiService: IOpenAiService
+    public class OpenAiService : IOpenAiService
     {
         private readonly OpenAiConfig _openAiConfig;
         private readonly HttpClient _httpClient;
@@ -19,32 +20,20 @@ namespace CheckReport.Server.Services
 
         public async Task<string> AnalyzeText(string documentText)
         {
+            var requirements = LoadRequirements();
+            var formattedRequirements = JsonSerializer.Serialize(requirements, new JsonSerializerOptions { WriteIndented = true });
+
             var prompt = $@"
 Ти – експерт із перевірки курсових робіт.  
-Тобі надіслано текст курсової роботи.
-Перевір його відповідність наступним критеріям:
+Ось вимоги до оформлення документа:
 
-1️. **Шрифт**: Times New Roman, 14 pt  
-2️. **Міжрядковий інтервал**: 1.5  
-3️. **Поля сторінки**: ліве – 3 см, праве – 1.5 см, верхнє/нижнє – 2.5 см  
-4️. **Абзацний відступ**: 1.25 см  
-5️. **Нумерація сторінок**: має починатися з другої сторінки  
-6️. **Титульний аркуш повинен містити**:
-   - ""Київський національний університет імені Тараса Шевченка""
-   - Назву факультету
-   - Назву кафедри
-   - Фразу ""Курсова робота""
-   - ""3-го курсу""
-   - ""Київ – {DateTime.Now.Year}""
+{formattedRequirements}
 
-**Дуже важливо! Якщо хоч одна з вимог не виконується, поверни список помилок у форматі JSON:**  
+Перевір цей документ і повідом, які вимоги не виконані.  
+Якщо є помилки, поверни список у форматі JSON:
 ```json
 {{
-  ""errors"": [
-    ""Текст не має правильного шрифту."",
-    ""Відсутня назва університету."",
-    ""Нумерація сторінок починається не з другої сторінки.""
-  ]
+  ""errors"": [""Помилка 1"", ""Помилка 2""]
 }}
 
 Якщо всі вимоги виконані, поверни:
@@ -73,6 +62,23 @@ namespace CheckReport.Server.Services
 
             var response = await _httpClient.PostAsync("https://api.openai.com/v1/chat/completions", content);
             return await response.Content.ReadAsStringAsync();
+        }
+
+        private Dictionary<string, object> LoadRequirements()
+        {
+            var basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+            var projectRoot = Directory.GetParent(basePath)?.FullName;
+
+            var filePath = Path.Combine(projectRoot, "Resources", "requirements.json");
+
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException($"Файл із вимогами не знайдено за шляхом: {filePath}");
+            }
+
+            var json = File.ReadAllText(filePath);
+            return JsonSerializer.Deserialize<Dictionary<string, object>>(json);
         }
     }
 }

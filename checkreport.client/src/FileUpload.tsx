@@ -8,6 +8,11 @@ const FileUpload: React.FC = () => {
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = event.target.files?.[0];
         if (selectedFile) {
+            if (selectedFile.type !== "application/pdf") {
+                setErrors(["Невірний формат файлу. Завантажуйте тільки PDF."]);
+                setFile(null);
+                return;
+            }
             setFile(selectedFile);
             setErrors([]);
             setMessage("");

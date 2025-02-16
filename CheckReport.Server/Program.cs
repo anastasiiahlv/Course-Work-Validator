@@ -5,6 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.Configure<OpenAiConfig>(builder.Configuration.GetSection("OpenAI"));
+builder.Services.AddSingleton<AzureDocumentService>(sp =>
+    new AzureDocumentService(sp.GetRequiredService<IConfiguration>())
+);
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
