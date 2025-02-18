@@ -6,6 +6,7 @@ using System;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 public class AzureDocumentService
 {
@@ -23,25 +24,36 @@ public class AzureDocumentService
         using (var stream = file.OpenReadStream())
         {
             var operation = await _client.AnalyzeDocumentAsync(
-                WaitUntil.Started,
-                "prebuilt-read",
+                WaitUntil.Completed,
+                "prebuilt-layout",
                 BinaryData.FromStream(stream)
             );
 
-            AnalyzeResult result = await operation.WaitForCompletionAsync();
-
+            var result = operation.Value;
             var extractedText = new StringBuilder();
+
             foreach (var page in result.Pages)
             {
                 foreach (var line in page.Lines)
                 {
-                    string normalizedLine = line.Content.Trim().Normalize(NormalizationForm.FormC); // 🔹 Нормалізуємо текст
-                    extractedText.AppendLine(normalizedLine);
+                    extractedText.AppendLine(line.Content.Trim());
                 }
             }
 
-            return extractedText.ToString();
+            return PostProcessText(extractedText.ToString());
         }
+    }
+
+    private string PostProcessText(string text)
+    {
+        text = text.Replace("?", "і")
+                   .Replace("?", "ї")
+                   .Replace("?", "є");
+
+        text = Regex.Replace(text, @"\s{2,}", " ");
+        text = Regex.Replace(text, @"\n{2,}", "\n").Trim();
+
+        return text;
     }
 }
 

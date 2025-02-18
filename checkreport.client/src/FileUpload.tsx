@@ -2,19 +2,20 @@
 
 const FileUpload: React.FC = () => {
     const [file, setFile] = useState<File | null>(null);
-    const [errors, setErrors] = useState<string[]>([]);
+    const [errors, setErrors] = useState<{ [key: string]: string[] }>({});
     const [message, setMessage] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(false);
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = event.target.files?.[0];
         if (selectedFile) {
             if (selectedFile.type !== "application/pdf") {
-                setErrors(["Невірний формат файлу. Завантажуйте тільки PDF."]);
+                setErrors({ general: ["Невірний формат файлу. Завантажуйте тільки PDF."] });
                 setFile(null);
                 return;
             }
             setFile(selectedFile);
-            setErrors([]);
+            setErrors({});
             setMessage("");
         }
     };
@@ -22,12 +23,13 @@ const FileUpload: React.FC = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         if (!file) {
-            setErrors(["Будь ласка, виберіть файл!"]);
+            setErrors({ general: ["Будь ласка, виберіть файл!"] });
             return;
         }
 
         const formData = new FormData();
         formData.append('file', file);
+        setLoading(true);
 
         try {
             const response = await fetch('https://localhost:7270/api/validate', {
@@ -36,29 +38,28 @@ const FileUpload: React.FC = () => {
                 headers: { "Accept": "application/json" }
             });
 
-            // Отримуємо текст відповіді
             const text = await response.text();
             console.log("Відповідь сервера:", text);
 
-            // Спробуємо розпарсити JSON
             try {
                 const result = JSON.parse(text);
-
                 if (response.ok) {
                     setMessage(result.message);
-                    setErrors([]);
+                    setErrors({});
                 } else {
-                    setErrors(result.errors || ["Невідома помилка"]);
+                    setErrors(result.errors || { general: ["Невідома помилка"] });
                     setMessage("");
                 }
             } catch (error) {
-                setErrors(["Помилка обробки відповіді від сервера."]);
+                setErrors({ general: ["Помилка обробки відповіді від сервера."] });
                 setMessage("");
             }
 
         } catch (error) {
-            setErrors(["Помилка з'єднання з сервером."]);
+            setErrors({ general: ["Помилка з'єднання з сервером."] });
             setMessage("");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -66,17 +67,35 @@ const FileUpload: React.FC = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 <input type="file" onChange={handleFileChange} />
-                <button type="submit">Перевірити</button>
+                <button type="submit" disabled={loading}>
+                    {loading ? "Перевіряється..." : "Перевірити"}
+                </button>
             </form>
 
             {message && <p style={{ color: "green" }}>{message}</p>}
-            {errors.length > 0 && (
+
+            {Object.keys(errors).length > 0 && (
                 <div style={{ color: "red" }}>
-                    <ul>
-                        {errors.map((error, index) => (
-                            <li key={index}>{error}</li>
+                    {errors.general && (
+                        <ul>
+                            {errors.general.map((error, index) => (
+                                <li key={index}>{error}</li>
+                            ))}
+                        </ul>
+                    )}
+
+                    {Object.entries(errors)
+                        .filter(([key]) => key !== "general")
+                        .map(([section, sectionErrors]) => (
+                            <div key={section}>
+                                <strong>{section}</strong>
+                                <ul>
+                                    {(Array.isArray(sectionErrors) ? sectionErrors : [sectionErrors]).map((error, index) => (
+                                        <li key={index}>{error}</li>
+                                    ))}
+                                </ul>
+                            </div>
                         ))}
-                    </ul>
                 </div>
             )}
         </div>
@@ -84,4 +103,3 @@ const FileUpload: React.FC = () => {
 };
 
 export default FileUpload;
-

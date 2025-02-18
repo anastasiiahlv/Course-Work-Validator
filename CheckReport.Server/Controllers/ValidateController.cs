@@ -1,16 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using DocumentFormat.OpenXml.Packaging;
-using Microsoft.AspNetCore.Http;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using DocumentFormat.OpenXml.Wordprocessing;
-using Microsoft.AspNetCore.Http;
-using CheckReport.Server.Services;
+﻿using System.Text.RegularExpressions;
 using System.Text.Json;
-using CheckReport.Server.Configurations;
-using System.Text.RegularExpressions;
-using System.Text;
+using Microsoft.AspNetCore.Mvc;
+using CheckReport.Server.Services;
 
 namespace CheckReport.Controllers
 {
@@ -20,10 +11,10 @@ namespace CheckReport.Controllers
     public class ValidateController : ControllerBase
     {
         private readonly ILogger<ValidateController> _logger;
-        private readonly IOpenAiService _openAiService;
+        private readonly OpenAiService _openAiService;
         private readonly AzureDocumentService _documentService;
 
-        public ValidateController(ILogger<ValidateController> logger, IOpenAiService openAiService, AzureDocumentService documentService)
+        public ValidateController(ILogger<ValidateController> logger, OpenAiService openAiService, AzureDocumentService documentService)
         {
             _logger = logger;
             _openAiService = openAiService;
@@ -40,7 +31,6 @@ namespace CheckReport.Controllers
 
             Console.WriteLine($"Отримано файл: {file.FileName}, Content-Type: {file.ContentType}");
 
-            // ❌ Відхиляємо все, що не PDF
             if (!file.FileName.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
             {
                 return BadRequest(new { errors = new List<string> { "Невірний формат файлу. Завантажуйте PDF." } });
@@ -54,39 +44,74 @@ namespace CheckReport.Controllers
                 return BadRequest(new { errors = new List<string> { "Не вдалося прочитати текст із PDF." } });
             }
 
-            // Надсилаємо текст у GPT-4
-            string gptResponse = await _openAiService.AnalyzeText(extractedText);
-            Console.WriteLine("GPT-4 Response: " + gptResponse);
+            // 🔹 Розбиття тексту на частини
+            string titlePage = ExtractSection(extractedText, "Титульний аркуш");
+            string abstractText = ExtractSection(extractedText, "Реферат");
+            string tableOfContents = ExtractSection(extractedText, "ЗМІСТ");
+            string introduction = ExtractSection(extractedText, "ВСТУП");
+            string conclusions = ExtractSection(extractedText, "ВИСНОВКИ");
+            string references = ExtractSection(extractedText, "СПИСОК ВИКОРИСТАНИХ ДЖЕРЕЛ");
 
-            try
+            var errors = new List<string>();
+
+            // 🔹 Аналізуємо кожну частину через GPT-4
+            errors.AddRange(await _openAiService.ValidateTitlePage(titlePage));
+            errors.AddRange(await _openAiService.ValidateAbstract(abstractText));
+            errors.AddRange(await _openAiService.ValidateTableOfContents(tableOfContents));
+            errors.AddRange(await _openAiService.ValidateIntroduction(introduction));
+            errors.AddRange(await _openAiService.ValidateConclusions(conclusions));
+            errors.AddRange(await _openAiService.ValidateReferences(references));
+
+            if (errors.Count > 0)
             {
-                // 🔹 Видаляємо ```json ... ```
-                string cleanedResponse = Regex.Replace(gptResponse, @"```json|```", "").Trim();
-
-                // 🔹 Дебаг: виводимо очищену відповідь
-                Console.WriteLine("Очищений JSON від GPT-4:\n" + cleanedResponse);
-
-                // 🔹 Розбираємо відповідь GPT-4 (оскільки errors вкладені у `choices[0].message.content`)
-                var gptObject = JsonSerializer.Deserialize<Dictionary<string, object>>(cleanedResponse);
-                var choices = JsonSerializer.Deserialize<JsonElement[]>(gptObject["choices"].ToString());
-                var message = choices[0].GetProperty("message").GetProperty("content").GetString();
-
-                // 🔹 Перетворюємо `message` у Dictionary
-                var analysisResult = JsonSerializer.Deserialize<Dictionary<string, object>>(message);
-
-                if (analysisResult != null && analysisResult.ContainsKey("errors"))
-                {
-                    var gptErrors = JsonSerializer.Deserialize<List<string>>(JsonSerializer.Serialize(analysisResult["errors"]));
-                    return BadRequest(new { errors = gptErrors });
-                }
-
-                return Ok(new { message = "Файл успішно пройшов перевірку!" });
+                return BadRequest(new { errors });
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"❌ JSON помилка: {ex.Message}");
-                return BadRequest(new { errors = new List<string> { "Помилка обробки відповіді від GPT-4." } });
-            }
+
+            return Ok(new { message = "Файл успішно пройшов перевірку!" });
+        }
+
+        // 🟢 Метод для виділення титульного аркуша
+        private string ExtractTitlePage(string text)
+        {
+            return text.Split("\n").Take(15).Aggregate("", (acc, line) => acc + line + "\n"); // Беремо перші 15 рядків
+        }
+
+        // 🟢 Метод для виділення реферату (пошук за ключовими словами)
+        private string ExtractAbstract(string text)
+        {
+            return ExtractSection(text, "Реферат");
+        }
+
+        // 🟢 Метод для виділення змісту
+        private string ExtractTableOfContents(string text)
+        {
+            return ExtractSection(text, "ЗМІСТ");
+        }
+
+        // 🟢 Метод для виділення вступу
+        private string ExtractIntroduction(string text)
+        {
+            return ExtractSection(text, "ВСТУП");
+        }
+
+        // 🟢 Метод для виділення висновків
+        private string ExtractConclusions(string text)
+        {
+            return ExtractSection(text, "ВИСНОВКИ");
+        }
+
+        // 🟢 Метод для виділення переліку використаних джерел
+        private string ExtractReferences(string text)
+        {
+            return ExtractSection(text, "СПИСОК ВИКОРИСТАНИХ ДЖЕРЕЛ");
+        }
+
+        // 🔹 Універсальний метод для пошуку розділу в тексті
+        private string ExtractSection(string text, string sectionName)
+        {
+            var regex = new Regex($@"(?<=\b{sectionName}\b)[\s\S]*?(?=\n[A-ZА-ЯІЇЄ]{{2,}})", RegexOptions.IgnoreCase);
+            var match = regex.Match(text);
+            return match.Success ? match.Groups[0].Value.Trim() : "";
         }
     }
 }

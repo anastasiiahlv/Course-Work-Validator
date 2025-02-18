@@ -25,7 +25,7 @@ builder.Services.AddCors(options =>
         });
 });
 
-builder.Services.AddScoped<IOpenAiService, OpenAiService>();
+builder.Services.AddScoped<OpenAiService, OpenAiService>();
 
 var app = builder.Build();
 
