@@ -54,27 +54,27 @@
     "description": "Документ повинен містити такі обов’язкові розділи:",
     "requiredSections": [
       {
-        "name": "Реферат",
+        "name": "РЕФЕРАТ",
         "required": true
       },
       {
-        "name": "Зміст",
+        "name": "ЗМІСТ",
         "required": true
       },
       {
-        "name": "Вступ",
+        "name": "ВСТУП",
         "required": true
       },
       {
-        "name": "Основна частина",
+        "name": "ОСНОВНА ЧАСТИНА",
         "required": true
       },
       {
-        "name": "Висновки",
+        "name": "ВИСНОВКИ",
         "required": true
       },
       {
-        "name": "Перелік використаних джерел",
+        "name": "ПЕРЕЛІК ВИКОРИСТАНИХ ДЖЕРЕЛ",
         "required": true
       }
     ]

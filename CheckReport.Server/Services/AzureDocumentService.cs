@@ -2,11 +2,9 @@
 using Azure.AI.DocumentIntelligence;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Text;
-using System.Threading.Tasks;
-using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 public class AzureDocumentService
 {
@@ -25,11 +23,12 @@ public class AzureDocumentService
         {
             var operation = await _client.AnalyzeDocumentAsync(
                 WaitUntil.Completed,
-                "prebuilt-layout",
+                "prebuilt-read",
                 BinaryData.FromStream(stream)
             );
 
-            var result = operation.Value;
+            AnalyzeResult result = operation.Value;
+
             var extractedText = new StringBuilder();
 
             foreach (var page in result.Pages)
@@ -40,20 +39,20 @@ public class AzureDocumentService
                 }
             }
 
-            return PostProcessText(extractedText.ToString());
+            string text = extractedText.ToString();
+            text = FixTextEncoding(text);
+
+            return text;
         }
     }
 
-    private string PostProcessText(string text)
+    private string FixTextEncoding(string text)
     {
-        text = text.Replace("?", "і")
-                   .Replace("?", "ї")
-                   .Replace("?", "є");
-
-        text = Regex.Replace(text, @"\s{2,}", " ");
-        text = Regex.Replace(text, @"\n{2,}", "\n").Trim();
-
-        return text;
+        return text
+            .Replace("?", "і")
+            .Replace("!", "ї")
+            .Replace("'", "’")
+            .Replace("  ", " ")
+            .Trim();
     }
 }
-

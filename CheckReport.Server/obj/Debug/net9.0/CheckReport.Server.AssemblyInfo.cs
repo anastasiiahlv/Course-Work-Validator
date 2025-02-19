@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CheckReport.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ec99b0dbaad52da15441569eef4d697cd07b5bf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b1fc4cf0b5ab64fa9b4f223cb5d17565ade25fe")]
 [assembly: System.Reflection.AssemblyProductAttribute("CheckReport.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CheckReport.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
