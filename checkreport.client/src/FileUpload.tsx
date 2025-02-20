@@ -64,20 +64,22 @@ const FileUpload: React.FC = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="container">
+            <h1>Перевірка курсової роботи</h1>
+            <p>Завантажте документ у форматі .pdf для перевірки на відповідність вимогам.</p>
+            <form onSubmit={handleSubmit} className="file-upload">
                 <input type="file" onChange={handleFileChange} />
                 <button type="submit" disabled={loading}>
                     {loading ? "Перевіряється..." : "Перевірити"}
                 </button>
             </form>
 
-            {message && <p style={{ color: "green" }}>{message}</p>}
+            {message && <p className="message" style={{ color: "green" }}>{message}</p>}
 
             {Object.keys(errors).length > 0 && (
-                <div style={{ color: "red" }}>
+                <div className="error-container">
                     {errors.general && (
-                        <ul>
+                        <ul className="error-list">
                             {errors.general.map((error, index) => (
                                 <li key={index}>{error}</li>
                             ))}
@@ -89,8 +91,8 @@ const FileUpload: React.FC = () => {
                         .map(([section, sectionErrors]) => (
                             <div key={section}>
                                 <strong>{section}</strong>
-                                <ul>
-                                    {(Array.isArray(sectionErrors) ? sectionErrors : [sectionErrors]).map((error, index) => (
+                                <ul className="error-list">
+                                    {sectionErrors.map((error, index) => (
                                         <li key={index}>{error}</li>
                                     ))}
                                 </ul>

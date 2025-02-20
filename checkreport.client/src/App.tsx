@@ -4,9 +4,7 @@ import './App.css';
 
 const App: React.FC = () => {
     return (
-        <div className="container">
-            <h1>Перевірка курсових робіт</h1>
-            <p>Завантажте документ у форматі .docx для перевірки на відповідність вимогам.</p>
+        <div>
             <FileUpload />
         </div>
     );
