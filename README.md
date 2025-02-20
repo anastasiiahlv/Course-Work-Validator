@@ -10,9 +10,14 @@
 
 ### Приклад використання
 1. Завантажити PDF-файл курсової роботи
-![image](https://github.com/user-attachments/assets/766112aa-1b6d-4ec1-a4a5-52f24566857d)
+![image](https://github.com/user-attachments/assets/46f6cf9f-0978-4649-9fad-f3f0f1097eb7)
+
 2. Натиснути кнопку "Перевірити"
+![image](https://github.com/user-attachments/assets/3444a6e1-7a91-471b-bbf1-32f9940e4bad)
+
 3. Отримати список помилок
+![image](https://github.com/user-attachments/assets/00906aec-91ea-4567-bb31-3b11afe86ea2)
+
 
 ### Подальші покращення
 * Додати підтримку формату .docx
