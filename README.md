@@ -16,6 +16,8 @@
 ![image](https://github.com/user-attachments/assets/3444a6e1-7a91-471b-bbf1-32f9940e4bad)
 
 3. Отримати список помилок
+![image](https://github.com/user-attachments/assets/66a37874-5da6-4668-a9c6-36853a409747)
+Або повідомлення про успішну перевірку
 ![image](https://github.com/user-attachments/assets/00906aec-91ea-4567-bb31-3b11afe86ea2)
 
 
